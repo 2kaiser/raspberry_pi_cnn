@@ -34,7 +34,7 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 #train the model
-history = model.fit(train_images, train_labels, batch_size=32, epochs=6)
+history = model.fit(train_images, train_labels, batch_size=64, epochs=7)
 
 
 # list all data in history

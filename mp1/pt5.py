@@ -55,9 +55,10 @@ y_test = np.zeros(1000)
 prediction = loaded_model.predict(test_Data)
 print(len(prediction))
 res = ''
+    
 for pred in prediction:
     for i in range(10):
-        if pred[i] > .1:
+        if pred[i] > .2:
             res = res + str(i)
             break
 print(res)
