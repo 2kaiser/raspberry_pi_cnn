@@ -12,6 +12,8 @@ import trainStep
 import tensorflow.keras.backend as kb
 from tensorflow.python.keras.backend import set_session
 from tensorflow.python.keras.models import load_model
+import matplotlib.pyplot as plt
+
 tf.compat.v1.disable_eager_execution()
 tf.compat.v1.disable_v2_behavior()
 # import plotFunction
@@ -66,8 +68,8 @@ a = tf.constant(10, dtype=tf.float32);
 
 #2. Create the variable X. Here, recommended that you initialize X
 # from a numpy array with random numbers selected from between 0 and 1.
-#X = initializeX.function(shape=(4,1));
-X = tf.Variable(np.random.rand(4,1).astype(np.float32))
+X = initializeX.function(shape=(4,1));
+#X = tf.Variable(np.random.rand(4,1).astype(np.float32))
 shapeOfX = shape(X);
 
 if not ((len(shapeOfX) == 2) and (shapeOfX[0] == 4) and (shapeOfX[1] == 1)):
@@ -128,7 +130,12 @@ for i in range(250):
     print("Iteration %d, loss = %f"%(i, lossValue));
 
     lossValues.append(lossValue);
-
+plt.scatter(range(len(lossValues)),lossValues)
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'validation'], loc='upper left')
+plt.show()
 ### Please note that the following is not for demo, but only for the report (hence, currently commented out)
 # You may prepare the plot using another tool like Excel, but this is the recommended way.
 # # 10. Finally, add a function to plot the loss value across training steps
